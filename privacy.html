@@ -32,7 +32,8 @@
   <p>The app shows a banner and, if you choose, a video ad that lets you continue a lost round once.
     For this, Google processes in particular:</p>
   <ul>
-    <li>your device's advertising ID,</li>
+    <li>your device's advertising ID (Android: Advertising ID; iPhone: the IDFA, only if you allow
+      tracking when Apple asks, see section 4),</li>
     <li>your IP address and the approximate location derived from it,</li>
     <li>device information such as model, operating system, language and app version,</li>
     <li>information about which ads were shown and tapped.</li>
@@ -51,11 +52,18 @@
   <h2>4. Consent and withdrawal</h2>
   <p>On first launch in the EU, EEA, Switzerland and the UK, the app asks for your consent with Google's
     consent dialog (User Messaging Platform). You can change or withdraw your choice at any time in the
-    app's start menu under “Datenschutz-Einstellungen” (privacy settings). Withdrawal applies to the future.</p>
+    app's start menu under “Privacy settings”. Withdrawal applies to the future.</p>
+  <p>On iPhone, Apple's system also asks whether the app may track you (App Tracking Transparency).
+    Only if you allow it does Google receive your device's IDFA. You can change this at any time in the
+    iPhone's Settings under Privacy &amp; Security → Tracking. Without permission Google cannot use the IDFA;
+    to measure ad success, Apple's SKAdNetwork may be used, which reports results without identifying you.</p>
 
-  <h2>5. Google Play</h2>
-  <p>The app is distributed via Google Play. For downloads and updates, Google processes data under its
-    own responsibility, see the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
+  <h2>5. Google Play and App Store</h2>
+  <p>The app is distributed via Google Play and Apple's App Store (including test versions via TestFlight).
+    For downloads, updates and tests, Google or Apple (Apple Distribution International Ltd., Hollyhill
+    Industrial Estate, Hollyhill, Cork, Ireland) process data under their own responsibility, see the
+    <a href="https://policies.google.com/privacy">Google Privacy Policy</a> and
+    <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.</p>
 
   <h2>6. Children</h2>
   <p>The app is not directed at children under 13.</p>
