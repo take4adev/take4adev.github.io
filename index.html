@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Blockbeat 808</title>
 <meta name="description" content="Blockbeat 808 – Block-Puzzle mit einem Beat, der beim Abräumen mitwächst. Für Android.">
-<meta name="theme-color" content="#17171A">
+<meta name="theme-color" content="#08080A">
 <link rel="icon" href="icon.png">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -21,11 +21,16 @@
   <div class="hero">
     <img src="icon.png" alt="App-Symbol von Blockbeat 808">
     <div class="title">
-      <div class="t1">BLOCKBEAT</div>
-      <div class="t2">808</div>
+      <div class="t1"><span class="b">BLOCK</span><span class="c">BEAT</span></div>
+      <svg viewBox="0 0 200 84" role="img" aria-label="808">
+        <defs><linearGradient id="g808" x1="0" x2="1"><stop offset="0" stop-color="#FF5CD6"/><stop offset="1" stop-color="#18FFFF"/></linearGradient></defs>
+        <text x="100" y="72" text-anchor="middle" font-family="ChakraPetch, sans-serif" font-weight="700" font-size="86"
+          fill="#121216" stroke="url(#g808)" stroke-width="5" stroke-linejoin="round" paint-order="stroke">808</text>
+      </svg>
+      <div class="bar"></div>
     </div>
   </div>
-  <span class="badge">Für Android · bald im Google Play Store</span>
+  <div class="center"><span class="badge">Für Android · bald im Google Play Store</span></div>
 
   <p class="lead">Ein Block-Puzzle im Look eines Drumcomputers. Leg Steine auf das 8×8-Feld und räum volle
     Reihen und Spalten ab – jede Reihe startet den Beat. Combos holen Instrumente dazu, bis der MAX BEAT läuft.</p>
