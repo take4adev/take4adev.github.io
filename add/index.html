@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Freund hinzufügen – Blockbeat 808</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#17171A">
+<link rel="icon" href="../icon.png">
+<link rel="stylesheet" href="../style.css">
+<!-- Friend QR code from the game (owner 2026-11-02, lib/ui/invite.dart): with
+     the game installed Android opens this link in the game itself (App Link,
+     ../.well-known/assetlinks.json); this page only shows when it does not -
+     the button hands the link to the game, else to the Play Store. -->
+</head>
+<body>
+<main>
+  <div class="hero">
+    <img src="../icon.png" alt="">
+    <div class="title">
+      <div class="t1">BLOCKBEAT</div>
+      <div class="t2">808</div>
+    </div>
+  </div>
+  <div class="card">
+    <h2 id="h">Freund hinzufügen</h2>
+    <p id="p">Ein Freund hat dir seinen Blockbeat-Code gezeigt. Öffne ihn in Blockbeat 808 und schick ihm eine
+      Freundschaftsanfrage – dann seht ihr euch in der Bestenliste.</p>
+    <nav>
+      <a class="primary" id="open" href="https://play.google.com/store/apps/details?id=com.blockbeat808.game">In Blockbeat öffnen</a>
+      <a id="store" href="https://play.google.com/store/apps/details?id=com.blockbeat808.game">Blockbeat im Play Store</a>
+    </nav>
+  </div>
+</main>
+<script>
+  (function () {
+    var store = 'https://play.google.com/store/apps/details?id=com.blockbeat808.game';
+    var id = new URLSearchParams(location.search).get('p') || '';
+    if (/^[A-Za-z0-9_.\-]{1,80}$/.test(id) && /Android/i.test(navigator.userAgent)) {
+      document.getElementById('open').href = 'intent://take4adev.github.io/add/?p=' + encodeURIComponent(id) +
+        '#Intent;scheme=https;package=com.blockbeat808.game;S.browser_fallback_url=' + encodeURIComponent(store) + ';end';
+    }
+    if (!/^de/i.test(navigator.language || '')) {
+      document.documentElement.lang = 'en';
+      document.title = 'Add a friend – Blockbeat 808';
+      document.getElementById('h').textContent = 'Add a friend';
+      document.getElementById('p').textContent = 'A friend showed you their Blockbeat code. Open it in Blockbeat 808 ' +
+        'and send them a friend request – then you see each other on the leaderboard.';
+      document.getElementById('open').textContent = 'Open in Blockbeat';
+      document.getElementById('store').textContent = 'Blockbeat on Google Play';
+    }
+  })();
+</script>
+</body>
+</html>
