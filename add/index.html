@@ -10,8 +10,10 @@
 <link rel="stylesheet" href="../style.css?v=2">
 <!-- Friend QR code from the game (owner 2026-11-02, lib/ui/invite.dart): with
      the game installed Android opens this link in the game itself (App Link,
-     ../.well-known/assetlinks.json); this page only shows when it does not -
-     the button hands the link to the game, else to the Play Store. -->
+     ../.well-known/assetlinks.json), which opens the friend's Play Games
+     profile. This page only shows without the game (owner's variant B
+     2026-11-03): "follow" = the profile by Play Games name (?n=, Google's
+     share link my.play/<name>), and the store. Old codes carried ?p=<id>. -->
 </head>
 <body>
 <main>
@@ -29,30 +31,33 @@
   </div>
   <div class="card">
     <h2 id="h">Freund hinzufügen</h2>
-    <p id="p">Ein Freund hat dir seinen Blockbeat-Code gezeigt. Öffne ihn in Blockbeat 808 und schick ihm eine
-      Freundschaftsanfrage – dann seht ihr euch in der Bestenliste.</p>
+    <p id="p">Ein Freund hat dir seinen Blockbeat-Code gezeigt. Folge ihm bei Google Play Spiele und hol dir
+      Blockbeat 808 – dann seht ihr euch in der Bestenliste.</p>
     <nav>
-      <a class="primary" id="open" href="https://play.google.com/store/apps/details?id=com.blockbeat808.game">In Blockbeat öffnen</a>
-      <a id="store" href="https://play.google.com/store/apps/details?id=com.blockbeat808.game">Blockbeat im Play Store</a>
+      <a class="primary" id="follow" href="https://play.google.com/games/profile">Profil folgen</a>
+      <a id="store" href="https://play.google.com/store/apps/details?id=com.blockbeat808.game">Blockbeat holen</a>
     </nav>
   </div>
 </main>
 <script>
   (function () {
-    var store = 'https://play.google.com/store/apps/details?id=com.blockbeat808.game';
-    var id = new URLSearchParams(location.search).get('p') || '';
-    if (/^[A-Za-z0-9_.\-]{1,80}$/.test(id) && /Android/i.test(navigator.userAgent)) {
-      document.getElementById('open').href = 'intent://take4adev.github.io/add/?p=' + encodeURIComponent(id) +
-        '#Intent;scheme=https;package=com.blockbeat808.game;S.browser_fallback_url=' + encodeURIComponent(store) + ';end';
+    var name = new URLSearchParams(location.search).get('n') || '';
+    var follow = document.getElementById('follow');
+    if (/^[^\/?#&<>"\\]{1,40}$/.test(name)) {
+      follow.href = 'https://my.play/' + encodeURIComponent(name);
+    } else {
+      // An old code (player id) or none: no profile to open.
+      follow.style.display = 'none';
+      document.getElementById('store').className = 'primary';
     }
     if (!/^de/i.test(navigator.language || '')) {
       document.documentElement.lang = 'en';
       document.title = 'Add a friend – Blockbeat 808';
       document.getElementById('h').textContent = 'Add a friend';
-      document.getElementById('p').textContent = 'A friend showed you their Blockbeat code. Open it in Blockbeat 808 ' +
-        'and send them a friend request – then you see each other on the leaderboard.';
-      document.getElementById('open').textContent = 'Open in Blockbeat';
-      document.getElementById('store').textContent = 'Blockbeat on Google Play';
+      document.getElementById('p').textContent = 'A friend showed you their Blockbeat code. Follow them on Google ' +
+        'Play Games and get Blockbeat 808 – then you see each other on the leaderboard.';
+      follow.textContent = 'Follow profile';
+      document.getElementById('store').textContent = 'Get Blockbeat';
     }
   })();
 </script>
