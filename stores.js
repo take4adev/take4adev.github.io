@@ -6,7 +6,7 @@ var BB = (function () {
   return {
     play: 'https://play.google.com/store/apps/details?id=com.blockbeat808.game',
     apple: 'https://apps.apple.com/app/blockbeat-808/id6826680422',
-    appleLive: false,
+    appleLive: true, // live since 2026-11-11
     // iPads on iPadOS 13+ say "Macintosh" but have a touch screen.
     ios: /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1),
     android: /Android/i.test(ua),
