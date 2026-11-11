@@ -7,7 +7,8 @@
 <meta name="description" content="Blockbeat 808 – Block-Puzzle mit einem Beat, der beim Abräumen mitwächst. Für Android und iPhone.">
 <meta name="theme-color" content="#08080A">
 <link rel="icon" href="icon.png?v=2">
-<link rel="stylesheet" href="style.css?v=2">
+<link rel="stylesheet" href="style.css?v=3">
+<script src="stores.js?v=2"></script>
 </head>
 <body>
 <main>
@@ -30,12 +31,14 @@
       <div class="bar"></div>
     </div>
   </div>
-  <div class="center"><span class="badge">Für Android und iPhone · bald im Google Play Store und im App Store</span></div>
+  <div class="center"><span class="badge" id="badge">Jetzt bei Google Play · bald im App Store</span></div>
 
   <p class="lead">Ein Block-Puzzle im Look eines Drumcomputers. Leg Steine auf das 8×8-Feld und räum volle
     Reihen und Spalten ab – jede Reihe startet den Beat. Combos holen Instrumente dazu, bis der MAX BEAT läuft.</p>
   <p class="dim">A block puzzle styled like a drum machine. Place pieces on the 8×8 board and clear full rows
     and columns – every line starts the beat. Combos bring in more instruments until MAX BEAT plays.</p>
+
+  <div class="stores" id="stores"><a href="https://play.google.com/store/apps/details?id=com.blockbeat808.game">Google Play</a></div>
 
   <div class="features">
     <div class="feature" style="--c:#FF5CD6"><b>Der Beat wächst mit</b>
@@ -58,5 +61,10 @@
 
   <footer>© 2026 Marino Strick · take4adev</footer>
 </main>
+<script>
+  // The iPhone button and badge follow stores.js (owner 2026-11-11).
+  if (BB.appleLive) document.getElementById('badge').textContent = 'Bei Google Play und im App Store';
+  BB.badges(document.getElementById('stores'));
+</script>
 </body>
 </html>

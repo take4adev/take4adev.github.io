@@ -120,3 +120,11 @@ footer { margin-top: 48px; color: var(--dim); font-size: 14px; border-top: 1px s
   .card { padding: 4px 16px 14px; }
   nav a { padding: 11px 16px; }
 }
+
+/* Official store badges (stores.js BB.badges). Google's PNG carries its own
+   clear space, so it is drawn larger to match the App Store badge. */
+.stores { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 14px; margin: 22px 0 4px; }
+.store-badge { display: block; line-height: 0; }
+.store-badge.apple img { height: 44px; }
+.store-badge.play img { height: 57px; margin: -9px -8px; }
+.store-soon { color: #9a9aa6; font-size: 14px; }

@@ -7,13 +7,16 @@
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#08080A">
 <link rel="icon" href="../icon.png?v=2">
-<link rel="stylesheet" href="../style.css?v=2">
+<link rel="stylesheet" href="../style.css?v=3">
 <!-- Friend QR code from the game (owner 2026-11-02, lib/ui/invite.dart): with
      the game installed Android opens this link in the game itself (App Link,
      ../.well-known/assetlinks.json), which opens the friend's Play Games
      profile. This page only shows without the game (owner's variant B
      2026-11-03): "follow" = the profile by Play Games name (?n=, Google's
-     share link my.play/<name>), and the store. Old codes carried ?p=<id>. -->
+     share link my.play/<name>), and the store. Old codes carried ?p=<id>.
+     iPhone (owner 2026-11-11): no Play Games there, so only the App Store
+     (../stores.js). -->
+<script src="../stores.js?v=2"></script>
 </head>
 <body>
 <main>
@@ -35,8 +38,8 @@
       Blockbeat 808 – dann seht ihr euch in der Bestenliste.</p>
     <nav>
       <a class="primary" id="follow" href="https://play.google.com/games/profile">Profil folgen</a>
-      <a id="store" href="https://play.google.com/store/apps/details?id=com.blockbeat808.game">Blockbeat holen</a>
     </nav>
+    <div class="stores" id="store"><a href="https://play.google.com/store/apps/details?id=com.blockbeat808.game">Google Play</a></div>
   </div>
 </main>
 <script>
@@ -48,16 +51,29 @@
     } else {
       // An old code (player id) or none: no profile to open.
       follow.style.display = 'none';
-      document.getElementById('store').className = 'primary';
     }
-    if (!/^de/i.test(navigator.language || '')) {
+    var store = document.getElementById('store'), p = document.getElementById('p');
+    if (!BB.de) {
       document.documentElement.lang = 'en';
       document.title = 'Add a friend – Blockbeat 808';
       document.getElementById('h').textContent = 'Add a friend';
-      document.getElementById('p').textContent = 'A friend showed you their Blockbeat code. Follow them on Google ' +
+      p.textContent = 'A friend showed you their Blockbeat code. Follow them on Google ' +
         'Play Games and get Blockbeat 808 – then you see each other on the leaderboard.';
       follow.textContent = 'Follow profile';
-      document.getElementById('store').textContent = 'Get Blockbeat';
+    }
+    if (BB.ios) {
+      // No Google Play Games on the iPhone: only the game itself.
+      follow.style.display = 'none';
+      BB.badges(store, 'apple', '../');
+      if (BB.appleLive) {
+        p.textContent = BB.de ? 'Ein Freund hat dir seinen Blockbeat-Code gezeigt. Hol dir Blockbeat 808 im App Store!'
+            : 'A friend showed you their Blockbeat code. Get Blockbeat 808 on the App Store!';
+      } else {
+        p.textContent = BB.de ? 'Ein Freund hat dir seinen Blockbeat-Code gezeigt. Auf dem iPhone kommt Blockbeat 808 bald in den App Store.'
+            : 'A friend showed you their Blockbeat code. Blockbeat 808 is coming to the App Store for iPhone soon.';
+      }
+    } else {
+      BB.badges(store, 'play', '../');
     }
   })();
 </script>
